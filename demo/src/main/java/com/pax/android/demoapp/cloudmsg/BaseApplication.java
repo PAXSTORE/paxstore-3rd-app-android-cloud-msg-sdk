@@ -6,9 +6,7 @@ import android.os.RemoteException;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.pax.market.android.app.sdk.BaseApiService;
-import com.pax.market.android.app.sdk.Notifications;
-import com.pax.market.android.app.sdk.StoreSdk;
+import com.pax.market.android.app.sdk.msg.utils.Notifications;
 
 
 /**
@@ -33,20 +31,20 @@ public class BaseApplication extends Application {
 
     private void initStoreSdk() {
         //todo 1. Init AppKey，AppSecret and SN, make sure the appkey and appSecret is corret.
-        StoreSdk.getInstance().init(getApplicationContext(), appkey, appSecret, new BaseApiService.Callback() {
-            @Override
-            public void initSuccess() {
-                Log.i(TAG, "initSuccess.");
-                initInquirer();
-            }
-
-            @Override
-            public void initFailed(RemoteException e) {
-                Log.i(TAG, "initFailed: " + e.getMessage());
-                Toast.makeText(getApplicationContext(), "Cannot get API URL from STORE client," +
-                        " Please install STORE client first.", Toast.LENGTH_LONG).show();
-            }
-        });
+//        StoreSdk.getInstance().init(getApplicationContext(), appkey, appSecret, new BaseApiService.Callback() {
+//            @Override
+//            public void initSuccess() {
+//                Log.i(TAG, "initSuccess.");
+//                initInquirer();
+//            }
+//
+//            @Override
+//            public void initFailed(RemoteException e) {
+//                Log.i(TAG, "initFailed: " + e.getMessage());
+//                Toast.makeText(getApplicationContext(), "Cannot get API URL from STORE client," +
+//                        " Please install STORE client first.", Toast.LENGTH_LONG).show();
+//            }
+//        });
         //if you want to customize the notification for Cloud Message.
         Notifications.I.init(getApplicationContext())
                 .setSmallIcon(R.drawable.logo_white)
@@ -57,14 +55,14 @@ public class BaseApplication extends Application {
     private void initInquirer() {
 
         //todo 2. Init checking of whether app can be updated
-        StoreSdk.getInstance().initInquirer(new StoreSdk.Inquirer() {
-            @Override
-            public boolean isReadyUpdate() {
-                Log.i(TAG, "call business function....isReadyUpdate = " + isReadyToUpdate);
-                //todo call your business function here while is ready to update or not
-                return isReadyToUpdate;
-            }
-        });
+//        StoreSdk.getInstance().initInquirer(new StoreSdk.Inquirer() {
+//            @Override
+//            public boolean isReadyUpdate() {
+//                Log.i(TAG, "call business function....isReadyUpdate = " + isReadyToUpdate);
+//                //todo call your business function here while is ready to update or not
+//                return isReadyToUpdate;
+//            }
+//        });
     }
 
     public boolean isReadyToUpdate() {

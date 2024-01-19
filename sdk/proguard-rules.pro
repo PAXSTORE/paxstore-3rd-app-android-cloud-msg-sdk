@@ -17,9 +17,7 @@
 #}
 
 #Cloud Message
--keep class com.pax.market.android.app.sdk.msg.dto.NotificationMessage { *; }
--keep class com.pax.market.android.app.sdk.msg.dto.CloudMessage { *; }
-
+-keep class com.pax.market.android.app.sdk.msg.dto.**{*;}
 
 #Gson
 -dontwarn com.google.gson.**

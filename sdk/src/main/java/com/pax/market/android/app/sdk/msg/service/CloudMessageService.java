@@ -20,13 +20,13 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.pax.market.android.app.sdk.msg.apis.CloudMessageApi;
 import com.pax.market.android.app.sdk.msg.dto.CloudMessage;
 import com.pax.market.android.app.sdk.msg.dto.MediaMesageInfo;
 import com.pax.market.android.app.sdk.msg.utils.CloudMsgCryptoUtils;
 import com.pax.market.android.app.sdk.msg.utils.NotificationUtils;
 import com.pax.market.android.app.sdk.msg.utils.Notifications;
 import com.pax.market.android.app.sdk.msg.utils.PreferencesUtils;
+import com.pax.market.api.sdk.java.api.sync.CloudMessageApi;
 import com.pax.market.api.sdk.java.base.util.StringUtils;
 
 import org.slf4j.Logger;
