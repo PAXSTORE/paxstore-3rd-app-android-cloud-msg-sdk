@@ -1,0 +1,25 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.pax.market.android.app.sdk.msg">
+
+
+    <application
+        android:allowBackup="true">
+
+        <meta-data
+            android:name="STORE_SDK_CLOUD_MSG_VERSION"
+            android:value="${versionName}" />
+
+
+        <service android:name="com.pax.market.android.app.sdk.msg.service.CloudMessageService"
+            android:permission="com.market.android.app.sdk.CLOUD_MSG"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.paxstore.mpush.CLOUD_MESSAGE_RECEIVED"/>
+                <category android:name="${applicationId}"/>
+            </intent-filter>
+        </service>
+    </application>
+
+
+</manifest>

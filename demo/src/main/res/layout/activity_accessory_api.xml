@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_weight="0"
+            android:background="#0b2148"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/back_main_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0b2148"
+                android:gravity="left"
+                android:padding="16dp"
+                android:src="@mipmap/btn_back" />
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:text="@string/app_title"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lv_syncTerminalAccessory"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:text="syncTerminalAccessory test" />
+
+            <ImageButton
+                android:id="@+id/img_accessory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="#ffffff"
+                android:clickable="false"
+                android:padding="16dp"
+                android:src="@mipmap/list_btn_arrow" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lv_sync_terminal_accessory_hide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_accessory_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:defaultFocusHighlightEnabled="true"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:focusedByDefault="true"
+                    android:hint="Please input type"
+                    android:inputType="textCapCharacters"
+                    android:lines="1" />
+
+                <EditText
+                    android:id="@+id/et_accessory_accessory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:defaultFocusHighlightEnabled="true"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:focusedByDefault="true"
+                    android:hint="Please input accessory"
+                    android:inputType="textMultiLine" />
+
+                <Button
+                    android:id="@+id/btn_accessory_activate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_margin="10dp"
+                    android:background="#63af57"
+                    android:gravity="center|center_vertical"
+                    android:text="Activate"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DDDDDD" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD" />
+
+        <LinearLayout
+            android:id="@+id/lv_syncTerminalAccessoryEvent"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:text="@string/sync_terminal_accessory_event" />
+
+            <ImageButton
+                android:id="@+id/img_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="#ffffff"
+                android:clickable="false"
+                android:padding="16dp"
+                android:src="@mipmap/list_btn_arrow" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD" />
+
+
+        <LinearLayout
+            android:id="@+id/lv_sync_terminal_accessory_event_hide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_event_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:defaultFocusHighlightEnabled="true"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:focusedByDefault="true"
+                    android:hint="Please input type"
+                    android:inputType="textCapCharacters"
+                    android:lines="1" />
+
+                <EditText
+                    android:id="@+id/et_event_serial_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:defaultFocusHighlightEnabled="true"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:focusedByDefault="true"
+                    android:hint="Please input serialNo"
+                    android:inputType="textCapCharacters" />
+
+                <EditText
+                    android:id="@+id/et_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:defaultFocusHighlightEnabled="true"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:focusedByDefault="true"
+                    android:hint="Please input event"
+                    android:inputType="textMultiLine" />
+
+                <Button
+                    android:id="@+id/btn_event_activate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_margin="10dp"
+                    android:background="#63af57"
+                    android:gravity="center|center_vertical"
+                    android:text="Activate"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DDDDDD" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lv_get_accessory_profile_list"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:text="@string/get_accessory_profile_list" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="#ffffff"
+                android:clickable="false"
+                android:padding="16dp"
+                android:src="@mipmap/list_btn_arrow" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD" />
+
+        <LinearLayout
+            android:id="@+id/lv_get_accessory_action_list"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:text="@string/get_accessory_action_list" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="#ffffff"
+                android:clickable="false"
+                android:padding="16dp"
+                android:src="@mipmap/list_btn_arrow" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD" />
+
+        <LinearLayout
+            android:id="@+id/lv_update_action_status"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:text="@string/update_action_status" />
+
+            <ImageButton
+                android:id="@+id/img_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="#ffffff"
+                android:clickable="false"
+                android:padding="16dp"
+                android:src="@mipmap/list_btn_arrow" />
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD" />
+
+        <LinearLayout
+            android:id="@+id/lv_update_action_status_hide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_action_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:defaultFocusHighlightEnabled="true"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:focusedByDefault="true"
+                    android:hint="Please input actionId"
+                    android:inputType="number"
+                    android:lines="1" />
+
+                <EditText
+                    android:id="@+id/et_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:defaultFocusHighlightEnabled="true"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:focusedByDefault="true"
+                    android:hint="Please input status"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/et_errorCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:defaultFocusHighlightEnabled="true"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:focusedByDefault="true"
+                    android:hint="Please input errorCode"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/et_remarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:defaultFocusHighlightEnabled="true"
+                    android:enabled="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:focusedByDefault="true"
+                    android:hint="Please input remarks"
+                    android:inputType="textMultiLine" />
+
+                <Button
+                    android:id="@+id/btn_action_status_activate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_margin="10dp"
+                    android:background="#63af57"
+                    android:gravity="center|center_vertical"
+                    android:text="Activate"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DDDDDD" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lv_result_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:text="@string/show_api_result" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DDDDDD" />
+
+            <TextView
+                android:id="@+id/result_show_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:hint="@string/api_result" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD" />
+
+        <TextView
+            android:id="@+id/versionText"
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:text="@string/label_version_text"
+            android:textColor="#a9aabd"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/copyrightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/label_copyright_text"
+            android:textColor="#a9aabd"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+</ScrollView>
