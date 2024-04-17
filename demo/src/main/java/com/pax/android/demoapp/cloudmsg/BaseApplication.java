@@ -17,8 +17,8 @@ public class BaseApplication extends Application {
 
     private static final String TAG = BaseApplication.class.getSimpleName();
     //todo make sure to replace with your own app's appkey and appsecret
-    private static final String appkey = "MUHAKKHUAL59D15EKVIV";
-    private static final String appSecret = "7JLCWEIITIFTYPLTLRGN32ZI1BCZ4L6V9U6XL30D";
+    private static final String appkey = "your key";
+    private static final String appSecret = "your secret";
     private boolean isReadyToUpdate = true;
 
     @Override
