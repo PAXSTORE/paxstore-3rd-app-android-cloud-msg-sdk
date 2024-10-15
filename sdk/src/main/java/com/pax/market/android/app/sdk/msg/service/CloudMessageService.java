@@ -123,8 +123,24 @@ public class CloudMessageService extends IntentService {
             logger.error("encryptedData > no data");
             return null;
         }
-        if (CloudMessageApi.getInstance() != null && CloudMessageApi.getInstance().getAppSecret() != null) {
-            return CloudMsgCryptoUtils.aesDecrypt(encryptedData, CloudMessageApi.getInstance().getAppSecret());
+
+        int maxRetries = 10;
+        int retryDelay = 1000;
+        int retryCount = 0;
+
+        while (retryCount < maxRetries) {
+            if (CloudMessageApi.getInstance() == null || CloudMessageApi.getInstance().getAppSecret() == null) {
+                logger.warn("AppSecret is null, retrying in " + retryDelay + " ms...");
+                try {
+                    Thread.sleep(retryDelay);
+                } catch (InterruptedException e) {
+                    return null;
+                }
+                retryCount++;
+
+            } else {
+                return CloudMsgCryptoUtils.aesDecrypt(encryptedData, CloudMessageApi.getInstance().getAppSecret());
+            }
         }
         logger.error("Store sdk not initialized");
         return null;
