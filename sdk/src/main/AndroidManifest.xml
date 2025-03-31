@@ -1,10 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.pax.market.android.app.sdk.msg">
 
 
-    <application
-        android:allowBackup="true">
+    <application>
 
         <meta-data
             android:name="STORE_SDK_CLOUD_MSG_VERSION"
