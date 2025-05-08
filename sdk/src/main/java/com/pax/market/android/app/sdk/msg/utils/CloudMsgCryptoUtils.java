@@ -32,7 +32,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class CloudMsgCryptoUtils {
     private static final Logger logger = LoggerFactory.getLogger(CloudMsgCryptoUtils.class);
     private static final String AES = "AES";
-    private static SecureRandom random = new SecureRandom();
+    private static final String AES_CBC = "AES/CBC/PKCS5Padding";
 
     /**
      * Use AES to decrypt the string and return the original string.
@@ -75,7 +75,7 @@ public class CloudMsgCryptoUtils {
     private static byte[] aes(byte[] input, byte[] key, int mode) {
         try {
             SecretKey secretKey = new SecretKeySpec(key, AES);
-            Cipher cipher = Cipher.getInstance(AES);
+            Cipher cipher = Cipher.getInstance(AES_CBC);
             cipher.init(mode, secretKey);
             return cipher.doFinal(input);
         } catch (GeneralSecurityException e) {
