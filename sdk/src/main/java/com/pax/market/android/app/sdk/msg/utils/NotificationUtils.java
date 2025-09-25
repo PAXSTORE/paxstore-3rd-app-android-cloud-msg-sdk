@@ -16,7 +16,6 @@ public class NotificationUtils {
     private static final int NOTIFICATION_ID = 1002;
 
     private static final String LIBRARY_PACKAGE_NAME = "com.pax.market.android.app.sdk.msg";
-    private static final String APPLICATION_ID = "com.pax.market.android.app.sdk.msg";
 
     /**
      *
@@ -34,7 +33,7 @@ public class NotificationUtils {
             mChannel.enableVibration(false);
             notificationManager.createNotificationChannel(mChannel);
 
-            Notification.Builder builder = new Notification.Builder(service.getApplicationContext(), APPLICATION_ID);
+            Notification.Builder builder = new Notification.Builder(service.getApplicationContext(), LIBRARY_PACKAGE_NAME);
             builder.setContentText(content);
             builder.setSmallIcon(smallIcon);
             builder.setAutoCancel(true);
@@ -60,7 +59,7 @@ public class NotificationUtils {
             mChannel.enableVibration(false);
             notificationManager.createNotificationChannel(mChannel);
 
-            Notification.Builder builder = new Notification.Builder(service.getApplicationContext(), APPLICATION_ID);
+            Notification.Builder builder = new Notification.Builder(service.getApplicationContext(), LIBRARY_PACKAGE_NAME);
             builder.setContentText(content);
             builder.setSmallIcon(PreferencesUtils.getInt(service, SP_SMALL_LOGO_ICON, R.drawable.ic_notificaiton));
             builder.setAutoCancel(true);
