@@ -25,15 +25,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.pax.android.demoapp.cloudmsg'
 
-    applicationVariants.all { variant ->
-        variant.outputs.all {
-            if (outputFileName.endsWith('.apk') && 'release'.equals(variant.buildType.name)) {
-                variant.getPackageApplicationProvider().get().outputDirectory = new File(buildDir, "outputs/apk")
-                outputFileName = "SDK EXT-${buildType.name}-v${defaultConfig.versionName}.apk"
-            }
-        }
-    }
+//    applicationVariants.all { variant ->
+//        variant.outputs.all {
+//            if (outputFileName.endsWith('.apk') && 'release'.equals(variant.buildType.name)) {
+//                variant.getPackageApplicationProvider().get().outputDirectory = new File(buildDir, "outputs/apk")
+//                outputFileName = "SDK EXT-${buildType.name}-v${defaultConfig.versionName}.apk"
+//            }
+//        }
+//    }
 
 }
 

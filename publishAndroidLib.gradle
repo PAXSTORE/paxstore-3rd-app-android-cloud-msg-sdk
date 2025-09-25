@@ -1,4 +1,4 @@
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
 
@@ -7,6 +7,7 @@ ext["signing.password"] = ''
 ext["signing.secretKeyRingFile"] = ''
 ext["ossrhUsername"] = ''
 ext["ossrhPassword"] = ''
+ext["developerName"] = ''
 
 File secretPropsFile = project.rootProject.file('local.properties')
 if (secretPropsFile.exists()) {
@@ -25,7 +26,7 @@ def PUBLISH_GROUP_ID = 'com.whatspos.sdk' //这里可以不是直接申请时候
 
 def PUBLISH_ARTIFACT_ID = "paxstore-3rd-app-android-cloud-msg-sdk"
 
-def PUBLISH_VERSION = android.defaultConfig.versionName //这个是直接获取的库gradle里配置好的版本号，不用到处修改版本号，只需要维护一份就可以。
+def PUBLISH_VERSION = project.version //这个是直接获取的库gradle里配置好的版本号，不用到处修改版本号，只需要维护一份就可以。
 
 // 当你发布的是一个纯java的依赖，那么就需要把下面的方法打开因为纯java的依赖，maven那边要求提供完整的javadoc，
 // 但是aar不需要提供，也无法提供，因为下面的task javadocJar命令无法被识别
@@ -42,60 +43,82 @@ def PUBLISH_VERSION = android.defaultConfig.versionName //这个是直接获取�
 //artifacts {
 //    archives javadocJar, sourcesJar
 //}
-
-//签名
-signing {
-    required { gradle.taskGraph.hasTask("uploadArchives") }
-    sign configurations.archives
+android {
+    publishing {
+        singleVariant('release') {
+            withJavadocJar()
+            withSourcesJar()
+        }
+    }
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
 
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-            repository(url: "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+publishing {
+    publications {
+        release(MavenPublication) {
+            afterEvaluate {
+                from components.release
             }
 
-            snapshotRepository(url: "https://s01.oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
+            groupId = PUBLISH_GROUP_ID
+            artifactId = PUBLISH_ARTIFACT_ID
+            version = PUBLISH_VERSION
 
-            pom.groupId = PUBLISH_GROUP_ID
-            pom.artifactId = PUBLISH_ARTIFACT_ID
-            pom.version = PUBLISH_VERSION
 
-            pom.project {
-                name 'paxstore-3rd-app-android-sdk-ext'
-                packaging 'aar' //我这里发布的是安卓的包，所有写的aar
-                // optionally artifactId can be defined here
+            pom {
+                 name = 'paxstore-3rd-app-android-cloud-msg-sdk'
                 //修改项目描述和url
-                description 'PAXSTORE 3rd App Android SDK extention provides extra functions.'
-                url 'https://github.com/PAXSTORE/paxstore-3rd-app-android-sdk-ext'
+                description = 'PAXSTORE 3rd App Android cloud message sdk provides extra functions for cloud message.'
+                url = 'https://github.com/PAXSTORE/paxstore-3rd-app-android-cloud-msg-sdk'
 
                 scm {
                     //修改成你的Git地址：
-                    connection = 'scm:git:github.com/PAXSTORE/paxstore-3rd-app-android-sdk-ext.git'
-                    developerConnection = 'scm:git:ssh://github.com/PAXSTORE/paxstore-3rd-app-android-sdk-ext.git'
+                    connection = 'scm:git:github.com/PAXSTORE/paxstore-3rd-app-android-cloud-msg-sdk.git'
+                    developerConnection = 'scm:git:ssh://github.com/PAXSTORE/paxstore-3rd-app-android-cloud-msg-sdk.git'
                     //分支地址：
-                    url = 'https://github.com/PAXSTORE/paxstore-3rd-app-android-sdk-ext/tree/master'
+                    url = 'https://github.com/PAXSTORE/paxstore-3rd-app-android-cloud-msg-sdk/tree/master'
                 }
 
                 licenses {
                     license {
-                        name 'The Apache License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                     }
                 }
 
                 developers { // 改成你自己的信息
                     developer {
-                        name 'Derek'
-                        email 'paxstore-support@paxsz.com'
+                        name = developerName
+                        email = 'paxstore-support@paxsz.com'
                     }
                 }
             }
         }
     }
+    repositories {
+        if (project.version.endsWith('SNAPSHOT')) {
+            // snapshot can be uploaded to cloud directly
+            // you need to add below to your top level build.gradle to get this dependency
+            // maven { url "https://central.sonatype.com/repository/maven-snapshots/" }
+            maven {
+                url = "https://central.sonatype.com/repository/maven-snapshots/"
+                credentials {
+                    username = ossrhUsername
+                    password = ossrhPassword
+                }
+            }
+        } else {
+            // publish release version, files needed will be generated to build/staging-deploy
+            // zip com directory under staging-deploy file, and go to maven portal to release
+            maven {
+                url = layout.buildDirectory.dir('staging-deploy')
+            }
+        }
+    }
+
+}
+
+//签名
+signing {
+    sign publishing.publications.release
 }
