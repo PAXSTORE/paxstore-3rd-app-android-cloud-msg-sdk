@@ -6,8 +6,8 @@ android {
         applicationId "com.pax.android.demoapp.cloudmsg"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 800
-        versionName "9.0.0"
+        versionCode 900
+        versionName "10.0.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
