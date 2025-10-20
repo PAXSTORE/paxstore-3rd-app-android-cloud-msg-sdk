@@ -24,3 +24,7 @@
 -keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.** { *; }
 -keep class com.google.gson.examples.android.model.** { *; }
+
+-dontwarn com.pax.market.api.sdk.java.api.sync.CloudMessageApi
+-dontwarn com.pax.market.api.sdk.java.base.util.StringUtils
+-dontwarn org.slf4j.impl.StaticLoggerBinder
