@@ -1,6 +1,11 @@
 apply plugin: 'com.android.library'
 
-
+java {
+    toolchain {
+//        It is strongly recommended to set it to Java 8 or Java 11 for the best compatibility.
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+}
 android {
     compileSdkVersion 29
 
@@ -29,6 +34,11 @@ android {
         exclude 'META-INF/LICENSE'
     }
     namespace 'com.pax.market.android.app.sdk.msg'
+    compileOptions {
+        //It is strongly recommended to set it to Java 8 or Java 11 for the best compatibility.
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
