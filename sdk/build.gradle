@@ -7,7 +7,7 @@ java {
     }
 }
 android {
-    compileSdkVersion 29
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 19

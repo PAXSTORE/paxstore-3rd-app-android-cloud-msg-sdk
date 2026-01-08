@@ -55,7 +55,7 @@ public class CloudMessageService extends IntentService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        NotificationUtils.showForeGround(this, "Cloud message");
+        NotificationUtils.showForeGround(this, "Cloud message", NotificationUtils.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
         return super.onStartCommand(intent, flags, startId);
     }
 
